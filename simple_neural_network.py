@@ -68,3 +68,20 @@ class Model:
 			result = 0
 
 		return result
+
+if __name__ == "__main__":
+	data = [[1,0], [0,1]]
+	label = [1,0]
+
+	test_data = [[1,0], [0,1], [1,1], [0,0]]
+	test_label = [1, 0, 0, 1]
+
+	x_data = [1, 0]
+
+	model = Model()
+	model.fit(data=data, label=label)
+	accuracy = model.evaluate(test_data, test_label)
+	result = model.predict(data=x_data)
+
+	print("\nPerformance of the trained model on test data: %.2f" % accuracy)
+	print("\nWeights of the trained model: {}\n".format(model.weights))
