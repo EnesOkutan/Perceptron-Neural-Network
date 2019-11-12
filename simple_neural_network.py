@@ -39,3 +39,20 @@ class Model:
 					i = 0
 					train_accurate = 0
 				iteration += 1
+
+	def evaluate(self, data, label):
+		accuracy = 0
+		for i in range(len(data)):
+			net = 0
+			for j in range(len(data[i])):
+				net += data[i][j] * self.weights[j]
+			if net > self.threshold:
+				result = 1
+			else:
+				result = 0
+
+			if result == label[i]:
+				accuracy += 1
+
+		accuracy /= float(len(data))
+		return accuracy
