@@ -56,3 +56,15 @@ class Model:
 
 		accuracy /= float(len(data))
 		return accuracy
+
+	def predict(self, data):
+		net = 0
+		for i in range(len(data)):
+			net += data[i] * self.weights[i]
+
+		if net > self.threshold:
+			result = 1
+		else:
+			result = 0
+
+		return result
